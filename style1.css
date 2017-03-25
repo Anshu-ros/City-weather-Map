@@ -1,0 +1,37 @@
+h1{
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.container{
+	margin: auto;
+	height:350px;
+	width: 700px;
+	border: 2px solid black;
+	border-color: #FFFFFF;
+	position: absolute;
+	border-style: dashed;
+	top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	text-align: center;
+}
+
+a{
+	margin:150px 250px;
+	color:#FFFFFF;
+	background-color: #f44336;
+	text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+	padding: 14px 25px;
+}
+
+.secondary{
+	
+	position: absolute;
+	text-align: center;
+	color:#FFFFFF;
+}
+	
