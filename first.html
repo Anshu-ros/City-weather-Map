@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Search your City</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link href="style2.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -16,13 +18,63 @@
 	<div class="weather">
 		<h3>Find a Forecast</h3>
 		<p id="main">
-			City:  <input id="city" value="Allahabad"></input>
+			City:  <input id="city" value=""></input>
 			<br/><br/>
-			<button id="submit">Submit</button>
+			<button type="button" onclick="weatherAsk()" id="submit">Submit</button>
 		</p>
 	</div>
+	
+	<div class="result">
+		<script>
+			/*var wea;*/
+			function weatherAsk()
+			{
+				var api ='http://api.openweathermap.org/data/2.5/weather?q=';
+				var city='';
+				var apikey ='&APPID=cc873ca9a509ff769fdb13e2de1c0e8e';
+				var units ='&units=metric';
+				
+				city=document.getElementById("city");
+				var url=api+city.value+apikey+units;
+				
+				$.getJSON(url, function(data){
+					while(1)
+					{
+						if(data)
+						{
+							var temp=data.main.temp;
+							var humidity =data.main.humidity;
+							document.write("Weather conditions of "+city.value+" : <br><br>");
+							document.write("temperature="+temp+"<br>");
+							document.write("humidity="+humidity+"<br><br><br><br><br>");
+							document.write("Refresh page to search more");
+							break;
+						}
+					}
+				});
+			}
+
+			/*function gotData(data)
+			{
+				wea=data;
+			}
+			
+			function draw()
+			{
+				if(wea)
+				{
+					var temp=wea.main.temp;
+					var humidity =wea.main.humidity;
+					document.write(humidity);
+				}
+			}*/
+			
+			
+		</script>
+	</div>
+	
 	<div class="state">
-		<a href="second.html" >For more..</a>
+		<a href="second.html" target="_blank" >For more..</a>
 	</div>
 </body>
 </html>
