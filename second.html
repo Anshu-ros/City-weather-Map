@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>About State</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href="style3.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<div class="header">
+		<h1>Average temperature of your state</h1>
+	</div>
+	
+	<div class="container">
+		<img src="wnow.jpg" alt="Weather now"/>
+		<p id="instruct">Input Cities Of Your State<br/></p>
+		<p>You should enter cities of the same state..:)</p>
+	</div>
+	
+	<div class="inputs">
+		<p id="main">
+			City:  <input id="city" value=""></input>
+			<br/><br/>
+			<button type="button" onclick="tempAsk(0)" id="next">Next</button>
+			<button type="button" onclick="tempAsk(1)" id="ok">OKay!</button>
+		</p>
+	</div>
+	
+	<div class="result">
+		<script>
+			
+			var tmin=[0];
+			var tmax=[0];
+			var c=0;
+			
+			function tempAsk(flag)
+			{
+				var api ='http://api.openweathermap.org/data/2.5/weather?q=';
+				var city='';
+				var apikey ='&APPID=cc873ca9a509ff769fdb13e2de1c0e8e';
+				var units ='&units=metric';
+				
+				city=document.getElementById("city");
+				var url=api+city.value+apikey+units;
+				
+				$.getJSON(url, function(data){
+						if(data)
+						{
+							var tempMin=data.main.temp_min;
+							var tempMax =data.main.temp_max;
+							c=c+1;
+							tmin[c]=tempMin;
+							tmax[c]=tempMax;
+							alert("Data recorded. Enter next city.");
+							if(flag===1)
+							weatherAsk();
+						}
+				});
+			}
+				
+			function weatherAsk()
+			{
+				var sumMin=0;
+				var sumMax=0;
+				var avg1;
+				var avg2;
+				for(var i=1;i<=c;i++)
+				{
+					sumMin=sumMin+tmin[i];
+					sumMax=sumMin+tmax[i];
+				}
+				document.write('Results <br><br>');
+				avg1=sumMin/c;
+				document.write("Minimum Average Temperature :"+avg1+"<br>");
+				avg2=sumMax/c;
+				document.write("Maximum Average Temperature :"+avg2+"<br>");
+			}
+		</script>
+	</div>
+</body>
+</html>
