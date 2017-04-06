@@ -8,7 +8,6 @@ Get weather forecast of your city
 * click Submit and get the result.
 #example
 * if choice is 'Allahabad' ,you will get the humidity and temperature of allahabad.
-* for more search you can refresh the page.
 
 #new feathers
 * To get average result of more than one cities
