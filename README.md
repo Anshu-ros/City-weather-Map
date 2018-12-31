@@ -10,8 +10,4 @@ Get weather forecast of your city
 * if choice is 'Allahabad' ,you will get the humidity and temperature of allahabad.
 
 #new feathers
-* To get average result of more than one cities
-* click let's start->for more
-* on the new page fill the city name of your choice.
-* click next to fill next city.
-* if you are done with the cities click oKay and get the result.
+* Average temperature and humidity will display,if more than one cities will be provided. 
